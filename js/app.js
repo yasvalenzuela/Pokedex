@@ -29,13 +29,18 @@ function addPokemon() {
   const data = JSON.parse(this.responseText);
   //const response = data.response;
   console.log(data);
-  const article = data;
-  console.log(article);
+
+  //console.log(article);
 
   let li = document.createElement('li');
-  li.className = 'articleClass';
-  const snippet = data.results.name;
-  li.innerText = snippet;
+  li.className = 'articleClass'
+  const pokemon = [];
+  for (let i=0; i < data.abilities.length; i++ ){
+    pokemon.push(data.abilities[i].ability.name);
+    console.log(data.abilities);
+  }
+console.log(pokemon);
+  li.innerText = pokemon;
 
   responseContainer.appendChild(li);
 }
