@@ -1,3 +1,4 @@
+
 // elementos que usaremos
 const form = document.getElementById('search-form');
 const searchField = document.getElementById('search-keyword');
@@ -32,15 +33,43 @@ function addPokemon() {
 
   //console.log(article);
 
+  let imgPokemon = document.createElement('img');
+  imgPokemon.className= 'img-responsive';
+  imgPokemon.style.width='10em';
+  let picture = data.sprites.front_default;
+  imgPokemon.src= picture;
+  responseContainer.appendChild(imgPokemon);
+
+
+  let names = document.createElement('li');
+  let namesPokemon = data.name;
+  console.log(namesPokemon);
+  //names.appendChild(namesPokemon);
+  names.innerText = 'name: ' + namesPokemon;
+  responseContainer.appendChild(names);
+
   let li = document.createElement('li');
-  li.className = 'articleClass'
   const pokemon = [];
   for (let i=0; i < data.abilities.length; i++ ){
     pokemon.push(data.abilities[i].ability.name);
     console.log(data.abilities);
   }
 console.log(pokemon);
-  li.innerText = pokemon;
-
+  li.innerText = 'habilidades: ' + pokemon;
   responseContainer.appendChild(li);
+
+  let type = document.createElement('li');
+  let typesPokemon = data.types[0].type.name;
+  console.log(typesPokemon);
+  type.innerText = 'type: ' + typesPokemon;
+  responseContainer.appendChild(type);
+
+  let experience = document.createElement('li');
+  let experiencePokemon = data.base_experience;
+  console.log(experiencePokemon);
+  experience.innerText = 'experience: ' + experiencePokemon;
+  responseContainer.appendChild(experience);
+
+responseContainer.style.display='block';
 }
+
